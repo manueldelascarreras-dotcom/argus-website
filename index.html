@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ARGUS — Your business, watched over</title>
 <meta name="description" content="ARGUS monitors your bookings, messages and payments and tells you what to do next.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" type="image/webp" href="assets/eye-880.webp" imagesrcset="assets/eye-560.webp 560w, assets/eye-880.webp 880w" imagesizes="(max-width: 560px) 84vw, 440px" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="assets/inter-tight-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/inter-var.woff2" crossorigin>
 <style>
+  /* Self-hosted variable fonts (latin), one file per family covers every weight */
+  @font-face{font-family:"Inter Tight";src:url(assets/inter-tight-var.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+  @font-face{font-family:"Inter";src:url(assets/inter-var.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
   :root{
     --bg:#edeef3;
     --bg-2:#f6f7f9;
@@ -81,12 +84,12 @@
   .eye-stage{position:relative;width:min(440px,84vw);aspect-ratio:1168/880;margin:0 auto 26px}
   .eye{position:absolute;inset:0;animation:float 6s ease-in-out infinite}
   .eye-inner{position:absolute;inset:0;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
-  /* Iris layers: measured from assets/eye.jpg (1168x880): iris centre 608,452 r~246; white of eye ~245-965 x 204-700 */
+  /* Iris layers: measured from the eye image (1168x880 original; same proportions in the webp sizes): iris centre 608,452 r~246; white of eye ~245-965 x 204-700 */
   .sclera{position:absolute;inset:0;clip-path:ellipse(30.8% 28.2% at 51.8% 51.4%);pointer-events:none}
   .sclera-cover{position:absolute;inset:0;background:radial-gradient(ellipse 24% 31.5% at 52.05% 51.36%,#e6e7ec 0,#e2e3e8 70%,#dcdde2 92%,rgba(220,221,226,0) 100%)}
   .iris-move{position:absolute;inset:0;transition:transform .35s cubic-bezier(.2,.8,.2,1);will-change:transform}
   .iris-move.idle{transition-duration:.9s}
-  .iris-img{position:absolute;inset:0;background:url(assets/eye.jpg) center/100% 100% no-repeat;
+  .iris-img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:fill;
     -webkit-mask-image:radial-gradient(ellipse 21.2% 28.1% at 52.05% 51.36%,#000 94%,transparent 100%);mask-image:radial-gradient(ellipse 21.2% 28.1% at 52.05% 51.36%,#000 94%,transparent 100%)}
   .eye-img{width:100%;height:100%;display:block;object-fit:contain;
     -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 88%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 88%,transparent 100%)}
@@ -343,8 +346,8 @@
     <div class="wrap">
       <div class="eye-stage" aria-hidden="true">
         <div class="eye"><div class="eye-inner">
-          <img class="eye-img" src="assets/eye.jpg" alt="" width="1168" height="880">
-          <div class="sclera"><div class="sclera-cover"></div><div class="iris-move"><div class="iris-img"></div></div></div>
+          <img class="eye-img" src="assets/eye-880.webp" srcset="assets/eye-560.webp 560w, assets/eye-880.webp 880w" sizes="(max-width: 560px) 84vw, 440px" alt="" width="1168" height="880" fetchpriority="high" decoding="async">
+          <div class="sclera"><div class="sclera-cover"></div><div class="iris-move"><img class="iris-img" src="assets/eye-880.webp" srcset="assets/eye-560.webp 560w, assets/eye-880.webp 880w" sizes="(max-width: 560px) 84vw, 440px" alt="" decoding="async"></div></div>
         </div></div>
       </div>
       <h1>Your business, watched over.</h1>
